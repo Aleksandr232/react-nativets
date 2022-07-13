@@ -21,7 +21,7 @@ import SearchIcon from './assets/search.svg';
 
 interface bgImgs {
   bgImg: object;
-  weatherType : string
+ 
 
 }
 
@@ -44,7 +44,7 @@ const WeatherIcon = ({weatherType}:weatherTypes) => {
   }
 };
 
-export default function App({ bgImg }: bgImgs) {
+export default function App({ bgImg}: bgImgs) {
   const { width: windowWidth, height: windowHeight } = useWindowDimensions();
   const scrollX = useRef(new Animated.Value(0)).current;
   return (
@@ -256,5 +256,16 @@ const styles = StyleSheet.create({
     fontSize: 25,
     lineHeight: 34,
     marginLeft: 10,
+  },
+  infoText: {
+    color: 'white',
+    fontSize: 14,
+    fontFamily: 'Lato-Regular',
+    fontWeight: 'bold',
+  },
+  infoBar: {
+    width: 45,
+    height: 5,
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
   },
 });
