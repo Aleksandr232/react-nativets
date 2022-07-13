@@ -72,6 +72,7 @@ export default function App({ bgImg }: bgImgs) {
                     </View>
                     <View>
                         <Text style={styles.temparature}>{location.temparature}</Text>
+                        <Text style={styles.weatherType}>{location.weatherType}</Text>
                     </View>
                   </View>
                   
@@ -158,5 +159,13 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontFamily: 'Lato-Light',
     fontSize: 85,
+  },
+  weatherType: {
+    color: '#fff',
+    fontFamily: 'Lato-Regular',
+    fontWeight: 'bold',
+    fontSize: 25,
+    lineHeight: 34,
+    marginLeft: 10,
   },
 });
