@@ -8,25 +8,28 @@ import {
   useWindowDimensions,
   StatusBar,
   Animated,
+  TouchableOpacity
 } from "react-native";
 import Locations from "./model/location";
+
+import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 import SunIcon from './assets/sun.svg';
 import CloudIcon from './assets/cloudy.svg';
 import MoonIcon from './assets/moon.svg';
 import RainIcon from './assets/rain.svg';
-import MenuIcon from './assets/menu.svg';
-import SearchIcon from './assets/search.svg';
+
+ import MenuIcon from './assets/menu.svg';
+import SearchIcon from './assets/search.svg'; 
 
 
 interface bgImgs {
   bgImg: object;
- 
-
 }
 
 interface weatherTypes{
-  weatherType : string
+  weatherType : string;
+
 }
 
 const WeatherIcon = ({weatherType}:weatherTypes) => {
@@ -171,6 +174,10 @@ export default function App({ bgImg}: bgImgs) {
           );
         })}
       </ScrollView>
+
+      
+
+
       <View
         style={styles.indicatorWrapper}
       >
@@ -268,4 +275,5 @@ const styles = StyleSheet.create({
     height: 5,
     backgroundColor: 'rgba(255, 255, 255, 0.5)',
   },
+ 
 });
