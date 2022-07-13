@@ -29,7 +29,7 @@ interface weatherTypes{
   weatherType : string
 }
 
-const WeatherIcon = ({weatherType}:bgImgs) => {
+const WeatherIcon = ({weatherType}:weatherTypes) => {
   if (weatherType == 'Sunny') {
     return <SunIcon width={34} height={34} fill="#fff" />;
   }
@@ -78,34 +78,93 @@ export default function App({ bgImg }: bgImgs) {
           }
           return (
             <View
-              style={{ width: windowWidth, height: windowHeight }}
-              key={index}
-            >
-              <ImageBackground source={bgImg} style={{ flex: 1 }}>
+              style={{width: windowWidth, height: windowHeight}}
+              key={index}>
+              <ImageBackground
+                source={bgImg}
+                style={{
+                  flex: 1,
+                }}>
                 <View
                   style={{
                     flex: 1,
-                    backgroundColor: "rgba(0,0,0,0.3)",
+                    backgroundColor: 'rgba(0,0,0,0.3)',
                     padding: 20,
-                  }}
-                >
-                  <View style={styles.infoTopWrapper}></View>
-                  <View style={{
-                    borderBottomColor: 'rgba(255,255,255,0.7)',
-                      marginTop: 20,
-                      borderBottomWidth: 1,}}/>
-                  <View style={styles.infoBattomWrapper}>
+                  }}>
+                  <View style={styles.topInfoWrapper}>
                     <View>
-                    <Text style={styles.city}>{location.city}</Text>
-                    <Text style={styles.time}>{location.dateTime}</Text>
+                      <Text style={styles.city}>{location.city}</Text>
+                      <Text style={styles.time}>{location.dateTime}</Text>
                     </View>
                     <View>
-                        <Text style={styles.temparature}>{location.temparature}</Text>
-                        <Text style={styles.weatherType}>{location.weatherType}</Text>
+                      <Text style={styles.temparature}>
+                        {location.temparature}
+                      </Text>
+                      <View style={{flexDirection: 'row'}}>
                         {WeatherIcon(location.weatherType)}
+                        <Text style={styles.weatherType}>
+                          {location.weatherType}
+                        </Text>
+                      </View>
                     </View>
                   </View>
-                  
+                  <View
+                    style={{
+                      borderBottomColor: 'rgba(255,255,255,0.7)',
+                      marginTop: 20,
+                      borderBottomWidth: 1,
+                    }}
+                  />
+                  <View style={styles.bottomInfoWrapper}>
+                    <View style={{alignItems: 'center'}}>
+                      <Text style={styles.infoText}>Wind</Text>
+                      <Text style={[styles.infoText, {fontSize: 24}]}>
+                        {location.wind}
+                      </Text>
+                      <Text style={styles.infoText}>km/h</Text>
+                      <View style={styles.infoBar}>
+                        <View
+                          style={{
+                            width: location.wind / 2,
+                            height: 5,
+                            backgroundColor: '#69F0AE',
+                          }}
+                        />
+                      </View>
+                    </View>
+                    <View style={{alignItems: 'center'}}>
+                      <Text style={styles.infoText}>Rain</Text>
+                      <Text style={[styles.infoText, {fontSize: 24}]}>
+                        {location.rain}
+                      </Text>
+                      <Text style={styles.infoText}>%</Text>
+                      <View style={styles.infoBar}>
+                        <View
+                          style={{
+                            width: location.rain / 2,
+                            height: 5,
+                            backgroundColor: '#F44336',
+                          }}
+                        />
+                      </View>
+                    </View>
+                    <View style={{alignItems: 'center'}}>
+                      <Text style={styles.infoText}>Humidity</Text>
+                      <Text style={[styles.infoText, {fontSize: 24}]}>
+                        {location.humidity}
+                      </Text>
+                      <Text style={styles.infoText}>%</Text>
+                      <View style={styles.infoBar}>
+                        <View
+                          style={{
+                            width: location.humidity / 2,
+                            height: 5,
+                            backgroundColor: '#F44336',
+                          }}
+                        />
+                      </View>
+                    </View>
+                  </View>
                 </View>
               </ImageBackground>
             </View>
@@ -164,12 +223,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  infoTopWrapper:{
+  topInfoWrapper:{
     flex: 1,
     marginTop: 160,
     justifyContent: 'space-between',
   },
-  infoBattomWrapper:{
+  bottomInfoWrapper:{
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginVertical: 20,
