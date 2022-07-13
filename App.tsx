@@ -65,8 +65,16 @@ export default function App({ bgImg }: bgImgs) {
                     borderBottomColor: 'rgba(255,255,255,0.7)',
                       marginTop: 20,
                       borderBottomWidth: 1,}}/>
-                  <View style={styles.infoBattomWrapper}></View>
-                  <Text style={{ color: "white" }}>{location.city}</Text>
+                  <View style={styles.infoBattomWrapper}>
+                    <View>
+                    <Text style={styles.city}>{location.city}</Text>
+                    <Text style={styles.time}>{location.dateTime}</Text>
+                    </View>
+                    <View>
+                        <Text style={styles.temparature}>{location.temparature}</Text>
+                    </View>
+                  </View>
+                  
                 </View>
               </ImageBackground>
             </View>
@@ -134,5 +142,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginVertical: 20,
-  }
+  },
+  city: {
+    color: '#fff',
+    fontSize: 30,
+    fontFamily: 'Lato-Regular',
+    fontWeight: 'bold',
+  },
+  time: {
+    color: '#fff',
+    fontFamily: 'Lato-Regular',
+    fontWeight: 'bold',
+  },
+  temparature: {
+    color: '#fff',
+    fontFamily: 'Lato-Light',
+    fontSize: 85,
+  },
 });
