@@ -58,10 +58,14 @@ export default function App({ bgImg }: bgImgs) {
                     flex: 1,
                     backgroundColor: "rgba(0,0,0,0.3)",
                     padding: 20,
-                    justifyContent: "center",
-                    alignItems: "center",
                   }}
                 >
+                  <View style={styles.infoTopWrapper}></View>
+                  <View style={{
+                    borderBottomColor: 'rgba(255,255,255,0.7)',
+                      marginTop: 20,
+                      borderBottomWidth: 1,}}/>
+                  <View style={styles.infoBattomWrapper}></View>
                   <Text style={{ color: "white" }}>{location.city}</Text>
                 </View>
               </ImageBackground>
@@ -120,5 +124,15 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center",
+  },
+  infoTopWrapper:{
+    flex: 1,
+    marginTop: 160,
+    justifyContent: 'space-between',
+  },
+  infoBattomWrapper:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginVertical: 20,
   }
 });
